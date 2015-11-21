@@ -2,13 +2,10 @@ package uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import uk.co.luciditysoftware.campervibe.domain.entities.*;
+import java.util.*;
+import org.junit.*;
 import java.text.*;
+import uk.co.luciditysoftware.campervibe.domain.entities.*;
 
 public class GetConflictingBookingsTests 
 {

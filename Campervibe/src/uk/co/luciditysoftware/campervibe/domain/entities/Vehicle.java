@@ -114,26 +114,6 @@ public class Vehicle
             {
     			conflictingBookings.add(booking);
             }
-    		
-    		/*if(startDate.before(booking.getStartDate()) && 
-            	(endDate.before(booking.getEndDate()) || endDate.equals(booking.getEndDate())))
-    		{
-    			conflictingBookings.add(booking);
-    		}*/
-    		
-    		/*if((startDate.after(booking.getStartDate()) || startDate.equals(booking.getStartDate()))
-    				&& startDate.before(booking.getEndDate()))
-    		{
-    			conflictingBookings.add(booking);
-    		}
-
-    		
-
-    		if((startDate.before(booking.getStartDate()) || startDate.equals(booking.getStartDate())) 
-            		&& (endDate.after(booking.getEndDate()) || endDate.equals(booking.getEndDate())))
-            {
-    			conflictingBookings.add(booking);
-            }*/
     	}
     	
         return conflictingBookings;

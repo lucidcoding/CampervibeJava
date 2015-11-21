@@ -1,8 +1,9 @@
 package uk.co.luciditysoftware.campervibe.domain.entities;
 
-import java.util.Date;
-import java.math.BigDecimal;
-//import java.util.Currency;
+import java.util.*;
+import java.math.*;
+import uk.co.luciditysoftware.campervibe.domain.requests.booking.*;
+import uk.co.luciditysoftware.campervibe.domain.common.*;
 
 public class Booking 
 {
@@ -106,4 +107,104 @@ public class Booking
 	{
 		this.total = total;
 	}
+	
+	public static List<ValidationMessage> validateMake(MakeRequest request)
+    {
+		List<ValidationMessage> validationMessages = new ArrayList<ValidationMessage>();
+		Date now = new Date();
+		
+        if (request.getStartDate() == null)
+        {
+            validationMessages.add(new ValidationMessage() 
+            {{
+            	setType(ValidationMessageType.ERROR);
+            	setField("StartDate");
+            	setText("Start date is required.");
+            }});
+        }
+        else if (request.getStartDate().before(now))
+        {
+            validationMessages.add(new ValidationMessage() 
+            {{
+            	setType(ValidationMessageType.ERROR);
+            	setField("StartDate");
+            	setText("Start date must not be in the past.");
+            }});
+        }
+        
+        if (request.getEndDate() == null)
+        {
+        	validationMessages.add(new ValidationMessage() 
+            {{
+            	setType(ValidationMessageType.ERROR);
+            	setField("EndDate");
+            	setText("End date must not be in the past.");
+            }});
+        }
+        else if (request.getEndDate().before(now))
+        {
+        	validationMessages.add(new ValidationMessage() 
+            {{
+            	setType(ValidationMessageType.ERROR);
+            	setField("EndDate");
+            	setText("End date must not be in the past.");
+            }});
+        }
+
+        if (request.getStartDate() != null 
+        		&& request.getEndDate() != null
+        		&& request.getEndDate().before(request.getStartDate()))
+        {
+        	validationMessages.add(new ValidationMessage() 
+            {{
+            	setType(ValidationMessageType.ERROR);
+            	setField("EndDate");
+            	setText("End date must not be before start date.");
+            }});
+        }
+
+        if (request.getVehicle() == null) 
+        {
+        	validationMessages.add(new ValidationMessage() 
+            {{
+            	setType(ValidationMessageType.ERROR);
+            	setField("Vehicle");
+            	setText("Vehicle is required.");
+            }});
+        }
+        
+        //if (request.Customer == null) validationMessages.AddError("Customer", "Customer is required.");
+
+        if (request.getVehicle() != null
+            && request.getStartDate() != null
+            && request.getEndDate() != null
+            && request.getVehicle().getConflictingBookings(
+            		request.getStartDate(), request.getEndDate()).size() > 0)
+        {
+        	validationMessages.add(new ValidationMessage() 
+            {{
+            	setType(ValidationMessageType.ERROR);
+            	setField("");
+            	setText("Booking conflicts with existing bookings.");
+            }});
+        }
+
+        return validationMessages;
+    }
+
+    public static Booking make(MakeRequest request)
+    {
+    	Booking booking = new Booking();
+        //booking.Id = Guid.NewGuid();
+        //booking.bookingNumber = request.Customer.FamilyName.ToUpper() + DateTime.Now.ToString("yyMMddHHmmss");
+        booking.startDate = request.getStartDate();
+        booking.endDate = request.getEndDate();
+        //booking.Customer = request.Customer;
+        //booking.createdBy = request.Customer.User;
+        booking.vehicle = request.getVehicle();
+        long totalMilliseconds =  request.getEndDate().getTime() - request.getStartDate().getTime();
+        int totalDays = (int) (totalMilliseconds / (24 * 60 * 60 * 1000));
+        booking.total = request.getVehicle().getPricePerDay().multiply(new BigDecimal(totalDays));
+        return booking;
+    }
 }
