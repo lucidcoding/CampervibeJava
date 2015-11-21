@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GetConflictingBookingsTests" project="Campervibe" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetConflictingBookingsTests" time="0.011">
+    <testcase name="nothingReturnedIfBeforeEarliestBooking" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetConflictingBookingsTests" time="0.007"/>
+    <testcase name="returnsBookingIfStartAfterStartAndEndEqualsEnd" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetConflictingBookingsTests" time="0.0"/>
+    <testcase name="returnsBookingIfStartDateIsBeforeAndEndIsAfterStart" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetConflictingBookingsTests" time="0.001"/>
+    <testcase name="returnsBookingIfStartDateBeforeAndEndDateEqualsStart" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetConflictingBookingsTests" time="0.001"/>
+    <testcase name="returnsBookingIfStartEqualsEndAndEndAfterEnd" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetConflictingBookingsTests" time="0.0"/>
+    <testcase name="returnsBookingIfStartEqualsStartAndEndEqualsEnd" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetConflictingBookingsTests" time="0.001"/>
+    <testcase name="returnsBookingIfStartDateIsEqualAndEndIsAfterStart" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetConflictingBookingsTests" time="0.001"/>
+  </testsuite>
+</testrun>

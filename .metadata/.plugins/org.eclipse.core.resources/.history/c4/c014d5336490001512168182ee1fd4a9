@@ -1,0 +1,15 @@
+package uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class GetConflictingBookingsTests 
+{
+
+	@Test
+	public void booking() {
+		fail("Not yet implemented");
+	}
+
+}

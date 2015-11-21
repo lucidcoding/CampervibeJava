@@ -1,0 +1,81 @@
+package uk.co.luciditysoftware.campervibe.domain.entities;
+
+public class Depot {
+	private String code;
+	private String name;
+	private String address1;
+	private String address2;
+	private String address3;
+	private String address4;
+	private String postCode;
+	
+	public String getCode()
+	{
+		return this.code;
+	}
+	
+	public void setCode(String value)
+	{
+		this.code = value;
+	}
+	
+	public String getName()
+	{
+		return this.name;
+	}
+	
+	public void setName(String value)
+	{
+		this.name = value;
+	}
+	
+	public String getAddress1()
+	{
+		return this.address1;
+	}
+	
+	public void setAddress1(String value)
+	{
+		this.address1 = value;
+	}
+	
+	public String getAddress2()
+	{
+		return this.address2;
+	}
+	
+	public void setAddress2(String value)
+	{
+		this.address2 = value;
+	}
+	
+	public String getAddress3()
+	{
+		return this.address3;
+	}
+	
+	public void setAddress3(String value)
+	{
+		this.address3 = value;
+	}
+	
+	public String getAddress4()
+	{
+		return this.address4;
+	}
+	
+	public void setAddress4(String value)
+	{
+		this.address4 = value;
+	}
+	
+	public String getPostCode()
+	{
+		return this.postCode;
+	}
+	
+	public void setPostCode(String value)
+	{
+		this.postCode = value;
+	}
+}

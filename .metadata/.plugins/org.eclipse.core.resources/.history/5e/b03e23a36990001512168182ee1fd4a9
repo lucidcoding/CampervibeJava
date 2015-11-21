@@ -1,0 +1,56 @@
+package uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import uk.co.luciditysoftware.campervibe.domain.entities.*;
+import java.text.*;
+
+public class GetConflictingBookingsTests 
+{
+	private Vehicle vehicle;
+	private SimpleDateFormat dateFormat;
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception 
+	{
+	}
+
+	@Before
+	public void setUp() throws Exception 
+	{
+		vehicle = new Vehicle();
+		List<Booking> bookings = new ArrayList<Booking>();
+		dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+
+		bookings.add(new Booking() 
+		{{
+			setStartDate(dateFormat.parse("16-11-2015 00:00:00"));
+			setEndDate(dateFormat.parse("20-11-2015 00:00:00"));
+			setVehicle(vehicle);
+		}});
+		
+		bookings.add(new Booking() 
+		{{
+			setStartDate(dateFormat.parse("02-11-2015 00:00:00"));
+			setEndDate(dateFormat.parse("06-11-2015 00:00:00"));
+			setVehicle(vehicle);
+		}});
+	}
+
+	@Test
+	public void nothingReturnedIfNoConflict() throws Exception 
+	{
+		//Act.
+		List<Booking> result = vehicle.getConflictingBookings(
+				dateFormat.parse("26-10-2015 00:00:00"), 
+				dateFormat.parse("30-10-2015 00:00:00"));
+		
+		//Assert.
+		assertEquals(0, result.size());
+	}
+
+}
