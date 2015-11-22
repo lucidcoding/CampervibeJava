@@ -2,6 +2,7 @@ package uk.co.luciditysoftware.campervibe.domain.entities;
 
 public class Depot 
 {
+	private long id;
 	private String code;
 	private String name;
 	private String address1;
@@ -9,6 +10,16 @@ public class Depot
 	private String address3;
 	private String address4;
 	private String postCode;
+	
+	public long getId() 
+	{
+		return id;
+	}
+
+	public void setId(long id) 
+	{
+		this.id = id;
+	}
 	
 	public String getCode() 
 	{

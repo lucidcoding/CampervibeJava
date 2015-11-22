@@ -186,7 +186,7 @@ public class Booking
             	setType(ValidationMessageType.ERROR);
             	setField("");
             	setText("Booking conflicts with existing bookings.");
-            }});
+            }}); 
         }
 
         return validationMessages;
