@@ -1,8 +1,10 @@
 package uk.co.luciditysoftware.campervibe.domain.entities;
 
+import java.util.UUID;
+
 public class Depot 
 {
-	private long id;
+	private UUID id;
 	private String code;
 	private String name;
 	private String address1;
@@ -11,12 +13,12 @@ public class Depot
 	private String address4;
 	private String postCode;
 	
-	public long getId() 
+	public UUID getId() 
 	{
 		return id;
 	}
 
-	public void setId(long id) 
+	public void setId(UUID id) 
 	{
 		this.id = id;
 	}

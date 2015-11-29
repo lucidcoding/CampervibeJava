@@ -39,3 +39,14 @@
 0:0:0:0:0:0:0:1 - - [29/Nov/2015:00:52:21 +0000] "GET /Campervibe/booking?action=make HTTP/1.1" 500 3706
 0:0:0:0:0:0:0:1 - - [29/Nov/2015:00:53:31 +0000] "GET /Campervibe/booking?action=make HTTP/1.1" 200 176
 0:0:0:0:0:0:0:1 - - [29/Nov/2015:00:53:58 +0000] "GET /Campervibe/booking?action=make HTTP/1.1" 200 197
+127.0.0.1 - - [29/Nov/2015:15:49:00 +0000] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:15:49:01 +0000] "GET /Campervibe/WEB-INF/jsp/view/listBookings.jsp HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:15:49:16 +0000] "GET /Campervibe/booking HTTP/1.1" 200 327
+127.0.0.1 - - [29/Nov/2015:18:50:18 +0000] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:18:50:19 +0000] "GET /Campervibe/WEB-INF/jsp/view/makeBookingForm.jsp HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:18:50:32 +0000] "GET /Campervibe/booking HTTP/1.1" 200 327
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:18:50:44 +0000] "GET /Campervibe/tickets?action=create HTTP/1.1" 404 1030
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:18:50:58 +0000] "GET /Campervibe/booking?action=create HTTP/1.1" 200 327
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:18:51:42 +0000] "GET /Campervibe/booking?action=make HTTP/1.1" 200 650
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:18:52:10 +0000] "GET /Campervibe/booking?action=make HTTP/1.1" 200 650
+0:0:0:0:0:0:0:1 - - [29/Nov/2015:18:52:10 +0000] "GET /favicon.ico HTTP/1.1" 404 1016
