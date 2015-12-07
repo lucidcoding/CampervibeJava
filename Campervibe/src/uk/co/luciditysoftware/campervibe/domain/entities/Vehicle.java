@@ -22,6 +22,8 @@ public class Vehicle {
         }
     }
 
+    */
+    
     public virtual IList<Booking> GetConflictingBookings(DateTime startDate, DateTime endDate)
     {
         return Bookings.Where(booking =>
@@ -30,5 +32,4 @@ public class Vehicle {
             || (startDate <= booking.StartDate && endDate >= booking.EndDate))
             .ToList();
     }
-    */
 }
