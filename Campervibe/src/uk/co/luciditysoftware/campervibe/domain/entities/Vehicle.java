@@ -1,35 +1,108 @@
 package uk.co.luciditysoftware.campervibe.domain.entities;
 
 import java.math.BigDecimal;
-import java.util.Currency;
+//import java.util.Currency;
+import java.util.*;
 
 public class Vehicle {
+	private UUID id;
 	private String name;
 	private String registrationNumber;
 	private String make;
 	private String model;
 	private BigDecimal pricePerDay;
 	private Depot homeDepot;
-	//private String ICollection<Booking> Bookings { get; set; }
+	private List<Booking> bookings;
 
-    //public virtual VehicleStatus Status { get; set; }
+	public UUID getId() {
+		return id;
+	}
 
-    /*public decimal? Mileage
-    {
-        get
-        {
-            return Bookings.Any() ? Bookings.Max(booking => booking.EndMileage) : null;
-        }
-    }
+	public void setId(UUID id) {
+		this.id = id;
+	}
 
-    */
-    
-    public virtual IList<Booking> GetConflictingBookings(DateTime startDate, DateTime endDate)
-    {
-        return Bookings.Where(booking =>
-            (startDate >= booking.StartDate && startDate < booking.EndDate)
-            || (endDate > booking.StartDate && endDate <= booking.EndDate)
-            || (startDate <= booking.StartDate && endDate >= booking.EndDate))
-            .ToList();
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRegistrationNumber() {
+		return registrationNumber;
+	}
+
+	public void setRegistrationNumber(String registrationNumber) {
+		this.registrationNumber = registrationNumber;
+	}
+
+	public String getMake() {
+		return make;
+	}
+
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public BigDecimal getPricePerDay() {
+		return pricePerDay;
+	}
+
+	public void setPricePerDay(BigDecimal pricePerDay) {
+		this.pricePerDay = pricePerDay;
+	}
+
+	public Depot getHomeDepot() {
+		return homeDepot;
+	}
+
+	public void setHomeDepot(Depot homeDepot) {
+		this.homeDepot = homeDepot;
+	}
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
+	// public virtual VehicleStatus Status { get; set; }
+
+	public BigDecimal getMileage() {
+		if (bookings.size() > 0) {
+			return Collections.max(bookings, (b1, b2) -> b1.getEndMileage().compareTo(b2.getEndMileage()))
+					.getEndMileage();
+		} else {
+			return null;
+		}
+	}
+
+	public List<Booking> getConflictingBookings(Date startDate, Date endDate) {
+		List<Booking> conflictingBookings = new ArrayList<>();
+
+		for (Booking booking : bookings) {
+			if ((endDate.after(booking.getStartDate()) || endDate.equals(booking.getStartDate()))
+					&& (endDate.before(booking.getEndDate()) || endDate.equals(booking.getEndDate()))) {
+				conflictingBookings.add(booking);
+			} else if ((startDate.after(booking.getStartDate()) || startDate.equals(booking.getStartDate()))
+					&& (startDate.before(booking.getEndDate()) || startDate.equals(booking.getEndDate()))) {
+				conflictingBookings.add(booking);
+			}
+		}
+
+		return conflictingBookings;
+	}
+>>>>>>> 07837b37796fd0a451e4abaecabd3d2ca070261c
 }
