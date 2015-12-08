@@ -178,6 +178,7 @@ public class Booking {
 
 	public static Booking make(MakeRequest request) {
 		Booking booking = new Booking();
+		booking.id = UUID.randomUUID();
 		// booking.Id = Guid.NewGuid();
 		// booking.bookingNumber = request.Customer.FamilyName.ToUpper() +
 		// DateTime.Now.ToString("yyMMddHHmmss");

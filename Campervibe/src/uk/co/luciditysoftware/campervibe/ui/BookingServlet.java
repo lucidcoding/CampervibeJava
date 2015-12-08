@@ -1,9 +1,12 @@
 package uk.co.luciditysoftware.campervibe.ui;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
 import uk.co.luciditysoftware.campervibe.domain.entities.Depot;
 import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
+import uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.annotation.MultipartConfig;
 
@@ -41,6 +45,7 @@ public class BookingServlet extends HttpServlet {
 			setMake("Volkswagen");
 			setModel("T1");
 			setHomeDepot(depot);
+			setPricePerDay(new BigDecimal(10.0));
 		}};
 		
 		Vehicle vehicle2 = new Vehicle(){{
@@ -49,6 +54,7 @@ public class BookingServlet extends HttpServlet {
 			setMake("Volkswagen");
 			setModel("T2");
 			setHomeDepot(depot);
+			setPricePerDay(new BigDecimal(10.0));
 		}};
 		
 		vehicleDatabase.put(vehicle1.getId(), vehicle1);
@@ -97,7 +103,7 @@ public class BookingServlet extends HttpServlet {
         
         switch(action)
         {
-            case "create":
+            case "make":
                 this.makeBooking(request, response);
                 break;
             case "list":
@@ -121,6 +127,32 @@ public class BookingServlet extends HttpServlet {
 	
 	private void makeBooking(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		
+		MakeRequest makeRequest = new MakeRequest();
+		
+		try
+		{
+			makeRequest.setStartDate(formatter.parse(request.getParameter("startDate")));
+		}
+		catch(Exception ex){
+			
+		}
+		
+		try
+		{
+			makeRequest.setEndDate(formatter.parse(request.getParameter("endDate")));
+		}
+		catch(Exception ex){
+			
+		}
+		
+		UUID vehicleId = UUID.fromString(request.getParameter("vehicleId"));
+		makeRequest.setVehicle(this.vehicleDatabase.get(vehicleId));
+		
+		Booking booking = Booking.make(makeRequest);
+		this.bookingDatabase.put(booking.getId(), booking);
+        request.setAttribute("bookingDatabase", this.bookingDatabase);
 		request.getRequestDispatcher("/WEB-INF/jsp/view/listBookings.jsp").forward(request, response);
 	}
 }

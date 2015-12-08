@@ -104,5 +104,4 @@ public class Vehicle {
 
 		return conflictingBookings;
 	}
->>>>>>> 07837b37796fd0a451e4abaecabd3d2ca070261c
 }

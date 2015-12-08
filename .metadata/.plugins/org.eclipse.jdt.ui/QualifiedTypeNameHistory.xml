@@ -7,4 +7,8 @@
 <fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Depot"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest"/>
 </qualifiedTypeNameHistroy>

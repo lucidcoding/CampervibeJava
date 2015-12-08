@@ -16,9 +16,10 @@
 <body>
 	<h1>Booking List</h1>
 	
-	<a href="<c:url value="/tickets">
-            <c:param name="action" value="create" />
-        </c:url>">Create Ticket</a><br /><br />
+	<a href="<c:url value="booking">
+            <c:param name="action" value="make" />
+        </c:url>">Create Ticket</a>
+        <br /><br />
         <%
             if(bookingDatabase.size() == 0)
             {

@@ -1,8 +1,0 @@
-package uk.co.luciditysoftware.campervibe.domain.entities;
-
-public class Thing {
-	public void doNothing()
-	{
-		var a = 1;
-	}
-}
