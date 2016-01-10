@@ -1,11 +1,11 @@
 <%@ page session="false" %>
-<%@ page import="java.util.Map, java.util.UUID" %>
+<%@ page import="java.util.ArrayList, java.util.UUID" %>
 <%@ page import="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle" %>
 
 <%
     @SuppressWarnings("unchecked")
-    Map<UUID, Vehicle> vehicleDatabase =
-            (Map<UUID, Vehicle>)request.getAttribute("vehicleDatabase");
+	ArrayList<Vehicle> vehicleDatabase =
+            (ArrayList<Vehicle>)request.getAttribute("vehicleDatabase");
 %>
 <!DOCTYPE html>
 <html>
@@ -23,11 +23,9 @@
 	        <div class="col-sm-6">
 	        	<select id="vehicleId" name="vehicleId" class="form-control">
 	        	<%
-	        		for(UUID id : vehicleDatabase.keySet())
+	        		for(Vehicle vehicle : vehicleDatabase)
                 	{
-	                    String idString = id.toString();
-	                    Vehicle vehicle = vehicleDatabase.get(id);
-	                    %><option value="<%= idString %>" ><%= vehicle.getName() %></option><%
+	                    %><option value="<%= vehicle.getId() %>" ><%= vehicle.getName() %></option><%
                 	}
 	        	%>
 	        	</select>

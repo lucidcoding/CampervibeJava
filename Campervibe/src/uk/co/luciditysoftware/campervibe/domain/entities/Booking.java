@@ -180,7 +180,7 @@ public class Booking {
 		Booking booking = new Booking();
 		booking.id = UUID.randomUUID();
 		// booking.Id = Guid.NewGuid();
-		// booking.bookingNumber = request.Customer.FamilyName.ToUpper() +
+		booking.bookingNumber = "BOOK-" + booking.id.toString();
 		// DateTime.Now.ToString("yyMMddHHmmss");
 		booking.startDate = request.getStartDate();
 		booking.endDate = request.getEndDate();
