@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
 import uk.co.luciditysoftware.campervibe.domain.entities.Depot;
 import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
@@ -26,6 +28,7 @@ public class BookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ArrayList<Booking> bookingDatabase = new ArrayList<>();
     private ArrayList<Vehicle> vehicleDatabase = new ArrayList<>();
+    private static final Logger log = LogManager.getLogger();
     
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -114,6 +117,7 @@ public class BookingServlet extends HttpServlet {
 
 	private void listBookings(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
         request.setAttribute("bookingDatabase", this.bookingDatabase);
 		request.getRequestDispatcher("/WEB-INF/jsp/view/listBookings.jsp").forward(request, response);
 	}

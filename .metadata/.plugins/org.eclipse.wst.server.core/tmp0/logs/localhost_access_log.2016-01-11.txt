@@ -1,0 +1,9 @@
+127.0.0.1 - - [11/Jan/2016:20:27:17 +0000] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [11/Jan/2016:20:27:18 +0000] "GET /Campervibe/WEB-INF/jsp/view/listBookings.jsp HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [11/Jan/2016:20:27:41 +0000] "GET /booking/action=list HTTP/1.1" 404 1032
+0:0:0:0:0:0:0:1 - - [11/Jan/2016:20:27:51 +0000] "GET /campervibe/booking/action=list HTTP/1.1" 404 1054
+127.0.0.1 - - [11/Jan/2016:20:28:09 +0000] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [11/Jan/2016:20:28:10 +0000] "GET /Campervibe/WEB-INF/jsp/view/listBookings.jsp HTTP/1.1" 404 992
+127.0.0.1 - - [11/Jan/2016:20:28:32 +0000] "GET /Campervibe/booking/action=make HTTP/1.1" 404 1054
+127.0.0.1 - - [11/Jan/2016:20:28:38 +0000] "GET /Campervibe/booking?action=make HTTP/1.1" 200 1449
+127.0.0.1 - - [11/Jan/2016:20:28:55 +0000] "POST /Campervibe/booking HTTP/1.1" 200 613
