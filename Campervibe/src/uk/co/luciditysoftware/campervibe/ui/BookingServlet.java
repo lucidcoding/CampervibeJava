@@ -117,7 +117,7 @@ public class BookingServlet extends HttpServlet {
 
 	private void listBookings(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		log.error("List called");
         request.setAttribute("bookingDatabase", this.bookingDatabase);
 		request.getRequestDispatcher("/WEB-INF/jsp/view/listBookings.jsp").forward(request, response);
 	}
