@@ -2,6 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="uk.co.luciditysoftware.campervibe.domain.entities.Booking" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
     @SuppressWarnings("unchecked")
@@ -22,15 +23,38 @@
         </c:url>">Create Ticket</a>
         <br /><br />
         <p>Records: ${bookingDatabase.size() }
-        <p>First: ${bookingDatabase[0].bookingNumber}
-        <ul>
+        <table>
+        	<thead>
+        		<tr>
+	        		<th>Booking Number</th>
+	        		<th>Start Date</th>
+	        		<th>End Date</th>
+	        		<th>Bus</th>
+	        		<th></th>
+        		</tr>
+        	</thead>
 		    <c:forEach items="${bookingDatabase}" var="b">
-		    	<li>
-		    		<c:out value="${b.getBookingNumber()}"/>
-	    			Key = ${b}, value = ${b.bookingNumber}, ${b.getBookingNumber()}
-	    		</li>
+		    	<tr>
+			    	<td>
+			    		<c:out value="${b.bookingNumber}"/>
+		    		</td>
+		    		<td>
+		    			<fmt:formatDate value="${b.startDate}" type="date" dateStyle="long" />
+		    		</td>
+		    		<td>
+		    			<fmt:formatDate value="${b.endDate}" type="date" dateStyle="long" />
+		    		</td>
+		    		<td>
+		    			${b.vehicle.name} 
+		    		</td>
+		    		<td>
+		    			<a href="<c:url value="/booking/view">
+							<c:param name="bookingId" value="${b.id}" />
+						</c:url>">View</a>
+		    		</td>
+	    		</tr>
 			</c:forEach>
-		</ul>
+		</table>
 		
 		
 </body>
